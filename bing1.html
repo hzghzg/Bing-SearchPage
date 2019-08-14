@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./resources/css/ext-all.css" />
+    <script type="text/javascript" src="./adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="ext-all.js"></script>
+    <style>
+        body {
+            background: url('background.jpg');
+        }
+        #searchpage{
+            padding-left: 250px;
+            padding-top: 250px;
+        }
+        #searchpage ul {
+            background: transparent;
+            border: none;
+         }
+ 
+        #searchpage div {
+            background: transparent;
+            border: none;
+        }
+ 
+        #searchpage li {
+            background: transparent;
+            border: none;
+        }
+        #searchButton {
+            margin-top: 26px;
+        }
+    </style>
+    <script>
+        Ext.onReady(function () {
+        tabpanelPlugin = function () {
+                this.init = function (cmp) {
+                    cmp.add({
+                        title: '国内搜索',
+                        xtype: 'field',
+                        height:50
+                    }),
+                    cmp.add({
+                        title: '国外搜索',
+                        xtype: 'field',
+                        height:50
+                    })
+                };
+            };
+        var searchBar = new Ext.Container({
+            renderTo:'searchpage',
+            layout: 'column',
+            items: [
+                {
+                    xtype: 'box',
+                    height: 80,
+                    autoEl: {
+                        tag: 'img',
+                        src: 'bing.png'
+                    },
+                    renderTo: 'logo'
+                },{
+                    xtype:'tabpanel',
+                    id: 'searchBar',
+                    activeTab:0,
+                    plugins: [new tabpanelPlugin()],
+                    width:600,
+                    renderTo: 'searchbar'
+                },{
+                    xtype:'button',
+                    id: 'searchButton',
+                    width:40,
+                    height:50,
+                    icon:'search.png',
+                    scale:'large',
+                    renderTo: 'searchbutton'
+                }
+                ],
+        })
+        }
+        );
+    </script>
+</head>
+
+<body>
+    <div id='searchpage'></div>
+    <div id="logo"></div>
+    <div id="searchbar"></div>
+    <div id="searchbutton"></div>
+</body>
+
+</html>
